@@ -23,12 +23,14 @@ class HelloRoute : RouteBuilder() {
     @Throws(Exception::class)
     override fun configure() {
         from(fromid)
-            .log("I'm in the Camel Route!")
-            .to("log:before?showBody=true")
+            .log("I'm in the Camel Route!\nMy body is: \${body}")
             .to(ExchangePattern.InOnly, toid1)
             .process { e -> e.getIn().body = "number 5" }
             .to("log:after?showBody=true")
             .to(toid2)
+
+        from(toid1)
+            .log("Luettu jonosta \${body}")
     }
 
 }
