@@ -9,15 +9,15 @@ import org.springframework.stereotype.Component
 
 
 @Component
-class HelloRoute : RouteBuilder() {
+class SedaRoute : RouteBuilder() {
 
-    @EndpointInject(uri = "{{input}}")
+    @EndpointInject(uri = "{{seda.route.input}}")
     lateinit var fromid: Endpoint
 
-    @EndpointInject(uri = "{{output1}}")
+    @EndpointInject(uri = "{{seda.route.output1}}")
     lateinit var toid1: Endpoint
 
-    @EndpointInject(uri = "{{output2}}")
+    @EndpointInject(uri = "{{seda.route.output2}}")
     lateinit var toid2: Endpoint
 
     @Throws(Exception::class)
